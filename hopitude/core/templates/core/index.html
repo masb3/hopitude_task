@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Hopitude Index{% endblock title %}
+
+{% block content %}
+{% if data %}
+    <table>
+          <tr>
+              <th>Asset id</th>
+              <th>Timestamp</th>
+              <th>Status</th>
+              <th>Rotor speed</th>
+              <th>Slack</th>
+              <th>Root threshold</th>
+              <th>Asset alias</th>
+              <th>Parent alias</th>
+         </tr>
+    {% for i in data %}
+        <tr>
+            <td>{{ i.asset_id }}</td>
+            <td>{{ i.timestamp }}</td>
+            <td>{{ i.status }}</td>
+            <td>{{ i.rotor_speed }}</td>
+            <td>{{ i.slack }}</td>
+            <td>{{ i.root_threshold }}</td>
+            <td>{{ i.asset_alias }}</td>
+            <td>{{ i.parent_alias }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <div align="center">
+        <h1>Get IoT Devices Data</h1>
+        <form method="post" action="{% url 'core:index' %}" class="p-5 bg-white">
+          {% csrf_token %}
+            <p>Apply filter:</p>
+            Status:<br>{{ form.status }}<br><br>
+            Operating parameters:<br>{{ form.operating_param }} {{ form.compare }} {{ form.value }}<br><br>
+          <input type="submit" value="Get Data">
+        </form>
+    </div>
+{% endif %}
+
+{% endblock content %}

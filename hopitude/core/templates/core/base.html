@@ -1,0 +1,41 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock title %}</title>
+
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+{% block body %}
+<!-- HEADER SECTION -->
+<!-- END HEADER SECTION -->
+
+{% block content %}
+{% endblock content %}
+
+<!-- FOOTER SECTION -->
+<!-- END FOOTER SECTION -->
+{% endblock body %}
+
+</body>
+</html>
